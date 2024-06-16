@@ -1,11 +1,17 @@
 
 # Introduction
 This repository contains a minimal implementation of Neural Radiance Fields (NeRF) using PyTorch. NeRF is a powerful method for 3D scene representation and rendering, enabling the creation of high-quality synthetic views of complex scenes from a set of 2D images.
+This program will output images and also the mesh.
+
+![description image](description/nerf.png)
+
+[Contribution guidelines for this project](docs/CONTRIBUTING.md)
 
 
 # How to run:
 Was run on:
 `torch==1.12.1+cu116 torchvision==0.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116`
+
 But also works with `torch==2.2.0+cu212`
 
 ```
