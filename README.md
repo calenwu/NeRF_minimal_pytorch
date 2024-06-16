@@ -5,8 +5,6 @@ This program will output images and also the mesh.
 
 ![description image](description/nerf.png)
 
-[Contribution guidelines for this project](docs/CONTRIBUTING.md)
-
 
 # How to run:
 Was run on:
