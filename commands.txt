@@ -1,0 +1,14 @@
+srun -n 1 --mem-per-cpu=10000 -t 60 -A machine_perception --pty bash
+
+python3 train.py --pretrained-root checkpoints/mp-2024/1x128x5500xray_dir --model-name model-2000.pth --save-root checkpoints --data-root data/public --wandb
+python3 train.py --save-root checkpoints --data-root data/public --wandb
+python3 train.py --pretrained-root checkpoints/mp-2024/20240613-111537 --model-name model-13000.pth --save-root checkpoints --data-root data/public --wandb
+python3 train.py --pretrained-root checkpoints/mp-2024/20240607-225709 --model-name model-7500.pth --save-root checkpoints --data-root data/public --wandb
+python3 train.py --save-root checkpoints --data-root data/private --wandb
+
+python3 test.py --pretrained-root checkpoints/mp-2024/sample_64x128_h_128_pts_128_mp_delta --model-name model-12000.pth --data-root data/public
+python3 test.py --pretrained-root checkpoints/mp-2024/20240613-113545 --model-name model-13000.pth --data-root data/public
+
+tar -zcvf folder.tar.gz -C folder .
+sbatch -n 2 --time=4:00:00 --mem-per-cpu=10000 -A machine_perception --output="training_log" --wrap="python3 train.py --save-root checkpoints --data-root data/private --wandb"
+scp georye@student-cluster2.inf.ethz.ch:/home/georye/project2/folder.tar.gz .
